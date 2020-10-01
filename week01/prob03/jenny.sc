@@ -1,33 +1,18 @@
 import scala.annotation.tailrec
 
 object Solution {
-  def partitionLabels(S: String): List[Int] = getResult(S, List())
-
-  @tailrec
-  def getResult(str: String, result: List[Int]): List[Int] = {
-    if (str.isEmpty) return result
-
-    val idx = str.lastIndexOf(str(0))
-
-    val i = getBunch(str, idx, str.substring(0, idx).toSet, Set())
-
-    getResult(str.substring(i), result :+ i)
+  def partitionLabels(S: String): List[Int] = {
+    getBunch(S, 0, 0, S.lastIndexOf(S(0)), List())
   }
 
   @tailrec
-  def getBunch(S: String, idx: Int, set: Set[Char], history: Set[Char]): Int = {
-    if (set.size == 0) return idx + 1
+  def getBunch(S: String, idx: Int, anchor: Int, partEnd: Int, ans: List[Int]): List[Int] = {
+    if (idx == S.length) return ans.reverse
 
-    val lastIdx = S.lastIndexOf(set.head)
-    val newHistory = history.+(set.head)
+    val newPartEnd = Math.max(partEnd, S.lastIndexOf(S(idx)))
 
-    if (lastIdx > idx) {
-      val newSet = S.substring(0, lastIdx).toSet
-
-      if (newSet.size > set.size) getBunch(S, lastIdx, newSet.diff(history), newHistory)
-      else getBunch(S, lastIdx, set.drop(1), newHistory)
-    }
-    else getBunch(S, idx, set.drop(1), newHistory)
+    if (idx == newPartEnd) getBunch(S, idx + 1, idx + 1, newPartEnd, (idx - anchor + 1) :: ans)
+    else getBunch(S, idx + 1, anchor, newPartEnd, ans)
   }
 }
 
