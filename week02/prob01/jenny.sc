@@ -10,7 +10,7 @@ object Solution {
   def zigzagLevelOrder(root: TreeNode): List[List[Int]] = {
     if (root == null) return List[Nothing]()
 
-    getResult(List(root, null), false, List[Int](), List[List[Int]]())
+    getResult(List(root, null), true, List[Int](), List[List[Int]]())
   }
 
   @tailrec
