@@ -1,3 +1,4 @@
+import scala.annotation.tailrec
 import scala.collection.immutable.Queue
 
 class TreeNode(_value: Int = 0, _left: TreeNode = null, _right: TreeNode = null) {
@@ -7,6 +8,7 @@ class TreeNode(_value: Int = 0, _left: TreeNode = null, _right: TreeNode = null)
 }
 
 object Solution {
+  @tailrec
   private def bfs(queue: Queue[(Int, TreeNode)], visited: List[(Int, Int)]): List[(Int, Int)] = {
     if (queue.isEmpty) visited
     else {
