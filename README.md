@@ -5,8 +5,8 @@
 
 | Week | Link              |    Done   |
 |:----:|-------------------|:---------:|
-|   1  | [week01](/week01) | :running: |
-|   2  | [week02](/week02) |           |
+|   1  | [week01](/week01) | :white_check_mark: |
+|   2  | [week02](/week02) | :running: |
 |   3  | [week03](/week03) |           |
 |   4  | [week04](/week04) |           |
 |   5  | [week05](/week05) |           |
